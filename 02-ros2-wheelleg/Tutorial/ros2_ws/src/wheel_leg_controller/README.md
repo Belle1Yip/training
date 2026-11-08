@@ -128,11 +128,27 @@ README 和 `doc/balance_pitch.png`，不要把调试阶段的旧 CSV 当成最�
 
 ![我的平衡 pitch 曲线](doc/balance_pitch.png)
 
+## 爬坡调试记录
+
+默认场景有 5 段坡，段与段之间约有 16 cm 落差。调试时遇到并解决了两个问题：
+
+1. **轮力矩饱和。** 原来的 `wheel_torque_limit=1.5 N·m` 在连续坡上会打满，机器人爬不上去；
+   模型执行器允许 `2.0 N·m`，所以默认值改为 `2.0 N·m`。
+2. **坡上跑歪。** 原代码把 `angular_velocity.x` 当作 yaw，但 `x` 是横滚角速度，`z` 才是
+   偏航角速度。坡上单侧轮先接触时，错误反馈会让机器人越跑越歪。现在 yaw 使用
+   `angular_velocity.z`，并增加直线行驶航向保持：`yaw_heading_kp=2.0`、
+   `yaw_heading_limit=0.6 rad/s`。
+
+速度不能直接降到 `0.3 m/s`：实测 `0.3/0.4 m/s` 会在坡脚因轮力矩不足卡住；
+`0.5 m/s` 配合航向保持可以连续通过 5 段坡。一次 GUI 验证结果为行程约 `6.5 m`，
+最大绝对 pitch 约 `24.1°`，最大绝对 yaw 约 `3.6°`，未翻车。目标腿长保持 `0.10 m`，
+因为当前机构下限就是 `0.10 m`，没有继续降低重心。
+
 ## 提交链接
 
 - 仓库：https://github.com/Belle1Yip/training
 - 控制包：`02-ros2-wheelleg/Tutorial/ros2_ws/src/wheel_leg_controller`
-- bag：<上传后的可访问链接>
+- 证据文件夹（bag、平衡/3 m/5 段坡录屏）：https://dcn6ta3td79t.feishu.cn/drive/folder/JbnEfAjAilU5rBdOuJIcYPSHnbg?from=from_copylink
 
 ## 平衡统计和曲线
 
