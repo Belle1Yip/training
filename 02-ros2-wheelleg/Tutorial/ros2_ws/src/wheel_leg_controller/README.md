@@ -114,8 +114,8 @@ ros2 topic echo /joy --once
 - README 说明控制结构、K/参数来源、实测平衡时长和 pitch 曲线；
 - 一段 10–20 s 录屏，或包含 `/imu`、`/joint_states`、`/actuator_cmd` 的 ros2 bag。
 
-具体录制步骤见 [RECORDING_GUIDE.md](RECORDING_GUIDE.md)。请用自己当次运行产生的数据填写
-README 和 `doc/balance_pitch.png`，不要把调试阶段的旧 CSV 当成最终证据。
+具体录制步骤见 [RECORDING_GUIDE.md](RECORDING_GUIDE.md)。本文档中的实测数据和曲线来自
+当次运行，不使用调试阶段的旧 CSV 作为最终证据。
 
 ## 我的实测
 
@@ -174,7 +174,7 @@ python3 src/wheel_leg_controller/tools/plot_balance.py \
 2. **左右轮/腿的安装方向不同。** 轮速和轮位置先取共模量，右腿 LQR 传入相反数，最后左右轮
    力矩符号也不同，不要直接统一。
 3. **`vmc_cal.py` 中 `d_L_0`、`d_phi_0`、`d_alpha` 为 0 是原工程行为。** 照原样保留，
-   这不是要求你修复的 bug。
+   这不是本次作业需要修复的 bug。
 4. **IMU 的 yaw 轴是 `angular_velocity.z`，不是 `x`。** `x` 是横滚角速度；用错会导致坡上
    越跑越歪。
 5. **坡间有约 16 cm 落差。** 0.3/0.4 m/s 可能在坡脚卡住；默认障碍场景连续通过时可使用
