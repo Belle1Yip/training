@@ -164,9 +164,6 @@ python3 src/wheel_leg_controller/tools/plot_balance.py \
   --output src/wheel_leg_controller/doc/balance_pitch.png
 ```
 
-把 `evaluate_balance.py` 输出的 `duration_s`、`max_abs_pitch_deg` 等数字写进 README 的
-“我的实测”一节。
-
 ## 常见问题
 
 1. **站桩时不要每一步更新 `x_b_set`。** 只在运动时让它跟随轮里程计；否则位置误差恒为 0，
