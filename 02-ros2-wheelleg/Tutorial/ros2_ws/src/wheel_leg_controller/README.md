@@ -32,7 +32,6 @@
 | `tools/evaluate_balance.py` | 统计平衡时长、pitch、腿长并输出 CSV |
 | `tools/evaluate_bonus.py` | 验收 3 m、合成 `/joy`、优先级回退 |
 | `tools/plot_balance.py` | 把平衡 CSV 画成 pitch 曲线 |
-| `RECORDING_GUIDE.md` | 录制和提交证据的步骤 |
 
 `vendor/` 中的控制公式来自原工程，只调整了文件位置，没有重新推导或修改增益。
 
@@ -114,8 +113,7 @@ ros2 topic echo /joy --once
 - README 说明控制结构、K/参数来源、实测平衡时长和 pitch 曲线；
 - 一段 10–20 s 录屏，或包含 `/imu`、`/joint_states`、`/actuator_cmd` 的 ros2 bag。
 
-具体录制步骤见 [RECORDING_GUIDE.md](RECORDING_GUIDE.md)。本文档中的实测数据和曲线来自
-当次运行，不使用调试阶段的旧 CSV 作为最终证据。
+本文档中的实测数据和曲线来自当次运行，不使用调试阶段的旧 CSV 作为最终证据。
 
 ## 我的实测
 
