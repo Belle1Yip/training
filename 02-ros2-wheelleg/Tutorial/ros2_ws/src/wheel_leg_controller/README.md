@@ -30,7 +30,6 @@
 | `wheel_leg_controller/vendor/roll_leg_control.py` | 根据 roll 分配左右目标腿长 |
 | `wheel_leg_controller/vendor/climb_traj.py` | 线速度加速度爬坡 |
 | `tools/evaluate_balance.py` | 统计平衡时长、pitch、腿长并输出 CSV |
-| `tools/evaluate_bonus.py` | 验收 3 m、合成 `/joy`、优先级回退 |
 | `tools/plot_balance.py` | 把平衡 CSV 画成 pitch 曲线 |
 
 `vendor/` 中的控制公式来自原工程，只调整了文件位置，没有重新推导或修改增益。
